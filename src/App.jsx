@@ -1,12 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './Header'
+import Footer from './Footer';
+import HomePage from './Page/Homepage';
+import StorePage from './Page/Storepage';
 
 function App() {
   
+
   return (
     
-    <h1 className="text-3xl font-bold text-center text-red-600 underline">
-    Hello world!
-  </h1>
+    <Router>
+      <Header/>
+      <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/store' element={<StorePage />}  />
+      </Routes>
+      <Footer/>
+    </Router>
+    
   )
 }
 
