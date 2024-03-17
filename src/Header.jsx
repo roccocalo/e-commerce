@@ -7,7 +7,7 @@ function Header() {
 
 
   return (
-    <div className="flex justify-between  p-5 bg-[#374f54]">
+    <div className="flex justify-between sticky top-0 z-50  p-5 bg-[#374f54]">
       <NavLink to="/">
         <span className="flex flex-row items-center gap-2">
           <img className='w-8 h-8' src="./Images/icon.png" alt="" /> <h1 className="text-center text-white text-3xl font-bold">PrimeWave</h1></span>

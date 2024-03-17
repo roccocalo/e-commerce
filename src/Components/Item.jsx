@@ -18,7 +18,7 @@ function Item({ item }) {
             </span>
             <p className="text-xl font-semibold">{item.price}$</p>
 
-            <div className="relative">
+            <div className="">
                 <p className={`text-center overflow-hidden ${isExpanded ? 'md:max-h-[173px]' : 'md:max-h-24 max-h-48'}`} onClick={toggleExpanded}>{item.description}</p>
                 
             </div>
