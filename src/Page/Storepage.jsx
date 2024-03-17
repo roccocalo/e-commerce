@@ -1,10 +1,30 @@
+import Item from "../Components/Item"
 
-function StorePage() {
+function StorePage({ products, error, loading }) {
+
+
 
     return (
-        <h1 className="text-3xl font-bold text-center text-green-600 underline">
-            Hello world! This is Store Page
-        </h1>
+        <div className="bg-slate-200">
+            
+            {loading && (
+                <div className="text-xl font-medium">Loading posts...</div>
+            )}
+            {error && <div className="text-red-700">{error}</div>}
+
+            <div className="md:grid md:grid-cols-3">
+            {products && products.map((item, index) => (
+                <div key={index} className="p-3 px-6  ">
+                <Item item={item} />
+                </div>
+                
+            ))}
+            </div>
+
+
+
+
+        </div>
     )
 }
 

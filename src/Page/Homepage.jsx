@@ -15,7 +15,7 @@ function HomePage() {
                     <h2 className="text-2xl md:text-3xl font-semibold ">Unveiling the Latest in Fashion and Tech!</h2>
                     <p className="md:px-32 md:text-2xl">
                         Welcome to PrimeWave, your ultimate destination for the latest in fashion, cutting-edge electronics, and stunning jewelry pieces.</p>
-                    <NavLink to="/store"> <button className='p-2 text-[#dfc9b3] font-bold text-black rounded-xl mt-1'>Shop Now!</button></NavLink>
+                    <NavLink to="/store"> <button className='p-2 text-[#dfc9b3] font-bold rounded-xl mt-1'>Shop Now!</button></NavLink>
 
                 </div></div>
 
