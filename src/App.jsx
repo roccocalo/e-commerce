@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header'
 import Footer from './Footer';
@@ -6,10 +6,17 @@ import HomePage from './Page/Homepage';
 import StorePage from './Page/Storepage';
 import Cartpage from './Page/Cartpage';
 
+
+export const CartContext = createContext(null)
+
 function App() {
   const [products, setProducts] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
+
+  const [cartItems, setCartItems] = useState([])
+
+  const [quantities, setQuantities] = useState({});
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
@@ -28,11 +35,26 @@ function App() {
       .finally(() => setLoading(false))
   }, [])
 
+  const addToCart = (item) => {
+    const checkInclude = cartItems.find(cartItem => cartItem.id == item.id)
+    if (checkInclude) return
+    setCartItems([...cartItems, item])
+  }
 
+  const removeItemCart = (item) => {
+    const TempCart = cartItems.filter(cartItem => cartItem.id !== item.id)
+    setCartItems(TempCart)
+  }
 
+  const updateQuantity = (itemId, quantity) => {
+    setQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [itemId]: quantity,
+    }));
+  };
 
   return (
-
+    <CartContext.Provider value={{cartItems, addToCart, removeItemCart, updateQuantity, quantities}}>
     <Router>
       <Header />
       <Routes>
@@ -42,6 +64,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    </CartContext.Provider>
 
   )
 }

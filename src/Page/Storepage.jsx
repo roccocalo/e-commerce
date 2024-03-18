@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+
 import Item from "../Components/Item"
 
 function StorePage({ products, error, loading }) {
     const [category, setCategory] = useState("all")
     const [list, setList] = useState([])
+
+    
 
 
     const setCart = () => {
