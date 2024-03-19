@@ -18,6 +18,9 @@ function App() {
 
   const [quantities, setQuantities] = useState({});
 
+  const [darkMode, setDarkMode] = useState(false);
+
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
       .then(response => {
@@ -53,19 +56,33 @@ function App() {
     }));
   };
 
-  return (
-    <CartContext.Provider value={{cartItems, addToCart, removeItemCart, updateQuantity, quantities}}>
-    <Router>
-      <Header />
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/store' element={<StorePage products={products} />} />
-        <Route path='/cart' element={<Cartpage />} />
-      </Routes>
-      <Footer />
-    </Router>
-    </CartContext.Provider>
+  const toggleDarkMode = () => {
+    setDarkMode(prevMode => !prevMode);
+    console.log('working')
+  }
 
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [darkMode])
+
+  return (
+    <div className={darkMode ? 'dark' : ''}>
+      <CartContext.Provider value={{ cartItems, addToCart, removeItemCart, setCartItems, updateQuantity, quantities }}>
+        <Router >
+          <Header toggleDarkMode={toggleDarkMode} />
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/store' element={<StorePage products={products} error={error} loading={loading} />} />
+            <Route path='/cart' element={<Cartpage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </CartContext.Provider>
+    </div>
   )
 }
 

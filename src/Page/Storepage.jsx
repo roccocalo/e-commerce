@@ -1,13 +1,10 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 
 import Item from "../Components/Item"
 
 function StorePage({ products, error, loading }) {
     const [category, setCategory] = useState("all")
     const [list, setList] = useState([])
-
-    
-
 
     const setCart = () => {
         setList(() => {
@@ -29,15 +26,13 @@ function StorePage({ products, error, loading }) {
         setCart()
     }, [category, products])
 
-
     return (
-        <div className="bg-slate-100">
-
+        <div className="bg-slate-100 dark:bg-[#121212]" >
 
             <label htmlFor="category" className="flex items-center p-2 pt-5 px-6 justify-center">
-                <h2 className="font-bold pr-2 text-xl">Category: </h2>
+                <h2 className="font-bold pr-2 text-xl dark:text-[#374f54]">Category: </h2>
                 <select
-                    className="shadow-md rounded-xl p-1 bg-white border-[#374f54] border text-lg"
+                    className="shadow-md rounded-xl p-1 bg-white dark:bg-[#414141] border-[#374f54] border text-lg"
                     name="category"
                     value={category}
                     onChange={e => setCategory(e.target.value)}>
@@ -50,7 +45,7 @@ function StorePage({ products, error, loading }) {
             </label>
 
             {loading && (
-                <div className="text-xl font-medium">Loading posts...</div>
+                <div className="text-xl font-medium">Loading information...</div>
             )}
             {error && <div className="text-red-700">{error}</div>}
 
@@ -60,12 +55,8 @@ function StorePage({ products, error, loading }) {
                         <div key={index} className="p-3 px-6  ">
                             <Item item={item} />
                         </div>
-
                     ))}
             </div>
-
-
-
 
         </div>
     )

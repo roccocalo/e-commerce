@@ -5,7 +5,7 @@ import { CartContext } from "../App"
 function ItemCart({ item }) {
     const [quantity, setQuantity] = useState(1)
 
-    const { updateQuantity } = useContext(CartContext);
+    const { updateQuantity, removeItemCart } = useContext(CartContext)
 
     const addQuantity = () => {
         setQuantity(quantity + 1)
@@ -20,12 +20,9 @@ function ItemCart({ item }) {
         updateQuantity(item.id, quantity);
     }, [quantity]);
 
-
-    const { addToCart, removeItemCart } = useContext(CartContext)
-
     return (
         <>
-            <div className="p-5 border-2 border-[#374f54] rounded flex flex-col items-center gap-3 shadow-xl bg-white md:hidden" >
+            <div className="p-5 border-2 border-[#374f54]  rounded flex flex-col items-center gap-3 shadow-xl bg-white dark:bg-[#414141]  md:hidden" >
 
                 <p className="font-bold text-2xl text-center   ">{item.title}</p>
                 <img className="w-3/5 mt-1 md:w-auto " src={item.image} alt="" />
@@ -35,15 +32,14 @@ function ItemCart({ item }) {
                 </span>
                 <p className="text-xl font-semibold">{item.price}$</p>
                 <div className="border-b-2 border-[#dfc9b3] flex justify-center items-center gap-2 text-lg">
-                    <button className="px-2 text-[#374f54] text-2xl" onClick={() => removeQuantity()}>-</button>
+                    <button className="px-2 text-[#374f54] dark:text-[#dfc9b3] text-2xl" onClick={() => removeQuantity()}>-</button>
                     <span>{quantity}</span>
-                    <button className="px-2 text-[#374f54] text-2xl" onClick={() => addQuantity()}>+</button>
+                    <button className="px-2 text-[#374f54] dark:text-[#dfc9b3] text-2xl" onClick={() => addQuantity()}>+</button>
                 </div>
-                <button className="p-2 px-6 bg-[#374f54] text-white rounded-md" onClick={() => removeItemCart(item)}>Delete</button>
+                <button className="p-2 px-6 bg-[#374f54] text-white  rounded-md" onClick={() => removeItemCart(item)}>Delete</button>
             </div>
 
-
-            <div className="hidden md:grid grid-cols-2 p-5 border-b border-[#374f54] rounded shadow-xl bg-white w-[900px]">
+            <div className="hidden md:grid grid-cols-2 p-5 border-b border-[#374f54] dark:border-slate-100 rounded shadow-xl bg-white dark:bg-[#414141] w-[900px]">
                 <div className="flex justify-center pr-4 items-center">
                     <img className=" w-auto h-32 object-cover object-center" src={item.image} alt="" />
                 </div>
@@ -55,10 +51,10 @@ function ItemCart({ item }) {
                             <p className="text-xl">{item.rating.rate}/5</p>
                         </span>
                         <p className="text-xl font-semibold">{item.price}$</p>
-                        <div className="border-b-2 border-[#dfc9b3] flex justify-center items-center gap-2 text-lg">
-                            <button className="px-2 text-[#374f54] text-2xl" onClick={() => removeQuantity()}>-</button>
+                        <div className="border-b-2 border-[#dfc9b3]  flex justify-center items-center gap-2 text-lg">
+                            <button className="px-2 text-[#374f54] dark:text-[#dfc9b3] text-2xl" onClick={() => removeQuantity()}>-</button>
                             <span >{quantity}</span>
-                            <button className="px-2 text-[#374f54] text-2xl" onClick={() => addQuantity()}>+</button>
+                            <button className="px-2 text-[#374f54] dark:text-[#dfc9b3] text-2xl" onClick={() => addQuantity()}>+</button>
                         </div>
                         <button className="p-2 px-6 bg-[#374f54] text-white rounded-md" onClick={() => removeItemCart(item)}>Delete</button>
                     </div>
