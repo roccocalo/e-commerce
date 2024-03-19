@@ -31,7 +31,7 @@ function StorePage({ products, error, loading }) {
 
 
     return (
-        <div className="bg-slate-200">
+        <div className="bg-slate-100">
 
 
             <label htmlFor="category" className="flex items-center p-2 pt-5 px-6 justify-center">
