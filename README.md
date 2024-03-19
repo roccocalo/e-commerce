@@ -1,8 +1,22 @@
-# React + Vite
+## Preview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![alt text](public/Preview/mobile.png)
 
-Currently, two official plugins are available:
+## Built With
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Vite + React
+- Tailwind css
+- React Router
+- [fakestoreapi](https://fakestoreapi.com/docs)
+
+## Features
+
+- Dark mode
+- Toggle menu in mobile
+- Showing items by category
+- Cart to buy items
+
+## Screenshot
+
+![alt text](public/Preview/md_store.png)
+![alt text](public/Preview/md_cart.png)

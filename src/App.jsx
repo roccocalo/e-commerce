@@ -58,7 +58,6 @@ function App() {
 
   const toggleDarkMode = () => {
     setDarkMode(prevMode => !prevMode);
-    console.log('working')
   }
 
   useEffect(() => {
